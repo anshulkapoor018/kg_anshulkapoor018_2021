@@ -17,6 +17,8 @@ in "bar" can be mapped to a character in "foo"
 
 __author__ = "Anshul Kapoor"
 
+import sys
+
 
 def one_to_one_mapping(string1, string2):
     if len(string1) != len(string2):
@@ -31,10 +33,18 @@ def one_to_one_mapping(string1, string2):
             """ Checks that character is already present as a 'key', 
             means it is already mapped to a Value and cannot be 
             mapped to two characters at once."""
-            return False
-
-    # print(a)
+            if mapping_dictionary[i] != j:
+                return False
     return True
 
 
-print(one_to_one_mapping("bar", "foo"))
+def main():
+    argumentList = sys.argv
+    if len(argumentList) == 3:  # Check if Correct Number of arguments passed
+        print(one_to_one_mapping(argumentList[1], argumentList[2]))
+    else:  # Number of arguments passed are incorrect
+        print("Please enter 2 Arguments!")
+
+
+if __name__ == "__main__":
+    main()
